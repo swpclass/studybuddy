@@ -4,7 +4,7 @@
 	"pref__general__AutoKeyframePropertiesArmed":"false",
 	"symbol_stage":{
 		"dummyStageParentWidth":"320px",
-		"dummyStageParentHeight":"568px",
+		"dummyStageParentHeight":"1000px",
 		"element_${_btnAdd}":{
 			"timelineColor2":"0x1095d2",
 			"timelineColor3":"0x29647e",
@@ -19,7 +19,7 @@
 			"timelineColor3":"0x295a6d",
 			"animationEnabled":"false",
 			"timelineColor":"0x008dc8"},
-		"defaultStageParentHeight":"568px",
+		"defaultStageParentHeight":"1000px",
 		"element_${_txtAdd}":{
 			"timelineColor2":"0x81aa62",
 			"timelineColor3":"0x5b6c4d",

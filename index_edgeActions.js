@@ -16,13 +16,18 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
       Symbol.bindElementAction(compId, symbolName, "document", "compositionReady", function(sym, e) {
          var boxAssignmentWidth = sym.$("boxAssignments").width();
          
-         for(var i=0; i<10;i++)
+         for(var i=0; i<20;i++)
          {
-         sym.$("boxAssignments").css("overflow:scroll");
          sym.$("boxAssignments").append("<div id='notes'><ul>");
-         sym.$("boxAssignments").append("</br><li style='text-decoration:none; color:#000; background:#ffc; display:block; height:10%; width:" + boxAssignmentWidth + "; padding:1em'>test</br>information</br>10:00pm</li>");
+         sym.$("boxAssignments").append("</br><li style='text-decoration:none; color:#000; background:#ffc; display:block; height:auto; width:" + boxAssignmentWidth + "; padding:1em'>test</br>information</br>10:00pm</li>");
          }
          sym.$("boxAssignments").append("</ul></div>");
+         
+         var stageHeight = sym.$("Stage").height();
+         var boxHeight = sym.$("boxAssignments").height();
+         var newHeight = stageHeight + (i - 1) * 100;
+         
+         sym.$("Stage").css({"height" : newHeight});
 
       });
       //Edge binding end

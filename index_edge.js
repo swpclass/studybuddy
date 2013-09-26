@@ -46,7 +46,7 @@ var symbols = {
          {
             id:'boxAssignments',
             type:'rect',
-            rect:['74px','145px','173px','377px','auto','auto'],
+            rect:['74px','145px','173px','0px','auto','auto'],
             fill:["rgba(77,245,56,0.00)"],
             stroke:[0,"rgb(0, 0, 0)","none"]
          }],
@@ -58,13 +58,13 @@ var symbols = {
       "Base State": {
          "${_boxAssignments}": [
             ["style", "top", '145px'],
-            ["style", "height", '377px'],
+            ["style", "height", '0px'],
             ["color", "background-color", 'rgba(77,245,56,0.00)']
          ],
          "${_Stage}": [
             ["color", "background-color", 'rgba(0,0,0,1.00)'],
             ["style", "overflow", 'hidden'],
-            ["style", "height", '568px'],
+            ["style", "height", '100%'],
             ["style", "width", '320px']
          ],
          "${_studybuddy}": [
