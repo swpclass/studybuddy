@@ -21,6 +21,9 @@
 	<script src="js/jquery.mobile-1.3.2.min.js"></script>
 	<script src="js/home.js"></script>
 	<script src="js/list-assignment.js"></script>
+    
+    
+    
 	
 
 	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.min.js"></script>
@@ -29,7 +32,12 @@
 	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.calbox.min.js"></script>
 	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/i18n/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
 	
+    <!-- Adding SQL functionality -->
+    <script src="js/html5sql.js"></script>
+    
+    
 </head>
+
 <body>
 
 
@@ -47,7 +55,7 @@
 
      <div data-role="content" data-theme="d">
 
-        <form action="#" method="get">
+        <form id="formAssignment" action="#" method="get">
 
 			
 			<div data-role="fieldcontain">
@@ -57,7 +65,7 @@
 
 			<div data-role="fieldcontain">
 			<label for="textarea">Description:</label>
-			<textarea cols="40" rows="8" name="description" id="textarea" data-mini="true"></textarea>
+			<textarea cols="40" rows="8" name="description" id="txtDescription" data-mini="true"></textarea>
 			</div>
 
 		
@@ -107,7 +115,39 @@
 
 
 
-
+<script type="text/javascript">
+	
+	$("#formAssignment").submit(function(event){
+    	
+		var assignmentName = $("#name").val();
+		var assignmentDescription = $("#txtDescription").val();
+		
+		html5sql.openDatabase("com.studybuddy.appdb", "Study Buddy Assignments", 3*1024*1024);
+		
+		
+		alert(assignmentName);
+		 html5sql.process(
+     		[
+				
+         		"CREATE table IF NOT EXISTS test (id INTEGER PRIMARY KEY, assignmentName TEXT, assignmentDescription TEXT);",
+				"INSERT INTO test (assignmentName, assignmentDescription) VALUES ('" + assignmentName + "', '" + assignmentDescription + "');"
+     		]	
+    		,
+     
+	 		function(){
+         		//alert("Success creating Table");
+				window.location.replace("index.html");
+     		},
+     		function(error, statement){
+         		alert("Error occured, assignment not added");
+     		}        
+ 		);
+		
+        event.preventDefault();
+    });
+	
+    </script>
+    
     
   
 
