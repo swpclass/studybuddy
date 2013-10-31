@@ -1908,8 +1908,8 @@ div.ui-mobile-viewport { overflow-x: hidden; }
     100% { transform: translateX(0) scale(1); }
 }
 /* content configurations. */
-.ui-grid-a, .ui-grid-b, .ui-grid-c, .ui-grid-d { overflow: hidden; }
-.ui-block-a, .ui-block-b, .ui-block-c, .ui-block-d, .ui-block-e { margin: 0; padding: 0; border: 0; float: left; min-height: 1px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; }
+.ui-grid-a, .ui-grid-b, .ui-grid-c, .ui-grid-d , .ui-grid-e, .ui-grid-f{ overflow: hidden; }
+.ui-block-a, .ui-block-b, .ui-block-c, .ui-block-d, .ui-block-e, .ui-block-f , .ui-block-g, .ui-block-h { margin: 0; padding: 0; border: 0; float: left; min-height: 1px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; }
 /* grid solo: 100 - single item fallback */
 .ui-grid-solo .ui-block-a { display: block; float: none; }
 /* Lower percentages for older browsers (i.e. IE7) to prevent wrapping. -.5px to fix BB5 wrap issue. */
@@ -1926,9 +1926,19 @@ div.ui-mobile-viewport { overflow-x: hidden; }
 .ui-grid-c > :nth-child(n) { width: 25%; margin-right: -.5px; }
 .ui-grid-c .ui-block-a { clear: left; }
 /* grid d: 20/20/20/20/20 */
-.ui-grid-d .ui-block-a, .ui-grid-d .ui-block-b, .ui-grid-d .ui-block-c, .ui-grid-d .ui-block-d, .ui-grid-d .ui-block-e { width: 19.925%; }
+.ui-grid-d .ui-block-a, .ui-grid-d .ui-block-b, .ui-grid-d .ui-block-c, .ui-grid-d .ui-block-d, .ui-grid-d .ui-block-e { width: 16.925%; }
 .ui-grid-d > :nth-child(n) { width: 20%; }
 .ui-grid-d .ui-block-a { clear: left; }
+
+/* grid e: 16.66/16.66/16.66/16.66/16.66/ */
+.ui-grid-e .ui-block-a, .ui-grid-e .ui-block-b, .ui-grid-e .ui-block-c, .ui-grid-e .ui-block-d, .ui-grid-e .ui-block-e, .ui-grid-e .ui-block-f { width: 16.66%; }
+.ui-grid-e > :nth-child(n) { width: 16.66%; }
+.ui-grid-e .ui-block-a { clear: left; }
+
+/* grid f: 14.285/14.285/14.285/14.285/14.285/ */
+.ui-grid-f .ui-block-a, .ui-grid-f .ui-block-b, .ui-grid-f .ui-block-c, .ui-grid-f .ui-block-d, .ui-grid-f .ui-block-e, .ui-grid-f .ui-block-f, .ui-grid-f .ui-block-g, { width: 14.285%; }
+.ui-grid-f > :nth-child(n) { width: 14.28%; }
+.ui-grid-f .ui-block-a { clear: left; }
 /* preset breakpoint to switch to stacked grid styles below 35em (560px) */
 @media all and (max-width: 35em) {
 	.ui-responsive .ui-block-a, 

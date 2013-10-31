@@ -7,37 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Study Buddy - Add Assignment</title>
 	<link rel="stylesheet"  href="css/themes/default/jquery.mobile-1.3.2.min.css">
-	<link rel="stylesheet" href="_assets/css/jqm-demos.css">
-	<link rel="stylesheet"  href="css/jqm-datebox.css">
-	<link rel="stylesheet"  href="css/jquery.mobile.datebox.css">
+	<link rel="stylesheet"  href="css/font-awesome/jqm-icon-pack-fa.css">
 	<link rel="stylesheet"  href="css/home.css">
-	<link rel="stylesheet"  href="css/list-assignment.css">
-	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" />
-	<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" /> 
 	<link rel="shortcut icon" href="favicon.ico">
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+	<link rel="stylesheet" href="css/font.css">
 	<script src="js/jquery.js"></script>
 	<script src="_assets/js/index.js"></script>
 	<script src="js/jquery.mobile-1.3.2.min.js"></script>
 	<script src="js/home.js"></script>
 	<script src="js/list-assignment.js"></script>
-    
-    
-    
+	<script src="js/html5sql.js"></script>
+    <script src="js/database_scripts.js"></script>
 	
-
-	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.min.js"></script>
-	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.slidebox.min.js"></script>
-	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.calbox.min.js"></script>
-	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.calbox.min.js"></script>
-	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/i18n/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
 	
-    <!-- Adding SQL functionality -->
-    <script src="js/html5sql.js"></script>
-    
-    
 </head>
-
 <body>
 
 
@@ -47,7 +30,7 @@
     
 	<div data-role="header" data-position="fixed" data-theme="a">
         <h1>Add Assignment</h1>
-		<a href="#left-panel" data-theme="d" data-icon="bars" data-iconpos="notext" data-shadow="false" data-iconshadow="false" >Open Menu</a>
+		<a href="#left-panel" data-theme="d" data-role="button" data-icon="ellipsis-vertical" data-iconpos="notext" data-shadow="false" data-iconshadow="false" >Open Menu</a>
 		<a href="index.html" data-theme="d" data-icon="home" data-iconpos="notext" data-shadow="false" data-iconshadow="false" >Home</a>
 	
 	</div><!-- /header -->
@@ -58,20 +41,27 @@
         <form id="formAssignment" action="#" method="get">
 
 			
+			
+			<div data-role="fieldcontain">
+	         <label for="name">Class Name:</label>
+	         <input type="text" name="name" id="classname" value="" data-mini="true" />
+			</div>
+			
+			
 			<div data-role="fieldcontain">
 	         <label for="name">Assignment Name:</label>
-	         <input type="text" name="name" id="name" value="" data-mini="true" />
+	         <input type="text" name="name" id="assignmentname" value="" data-mini="true" />
 			</div>
 
 			<div data-role="fieldcontain">
 			<label for="textarea">Description:</label>
-			<textarea cols="40" rows="8" name="description" id="txtDescription" data-mini="true"></textarea>
+			<textarea cols="40" rows="8" name="description" id="textarea" data-mini="true"></textarea>
 			</div>
 
 		
 
 			<div data-role="fieldcontain">
-				<label for="slider2">Notify switch:</label>
+				<label for="slider2">Break into Sessions?</label>
 				<select name="slider2" id="slider2" data-role="slider" data-mini="true">
 					<option value="off">Off</option>
 					<option value="on">On</option>
@@ -79,12 +69,14 @@
 			</div>
 
 			<div data-role="fieldcontain">
-				<label for="mydate">Due Date and Time</label>
-				<input name="mydate" id="mydate" type="date" data-role="datebox" data-options='{"mode": "slidebox", "overrideDateFormat":"%Y-%m-%dT%I:%M%p", "overrideTimeFormat":12, "overrideSlideFieldOrder":["y","m","d","h","i"]}'>
-			
+				<label for="mydate">Due Date:</label>
+				<input name="mydate" id="mydate" type="date" value="">
 			</div>
 			
-			
+			<div data-role="fieldcontain">
+				<label for="mytime">Due Time:</label>
+				<input name="mytime" id="mytime" type="time" value="">
+			</div>
 			
 
 
@@ -103,6 +95,7 @@
 
     	<ul data-role="listview" data-theme="d">
         	<li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
+			<li data-icon="calendar"><a href="schedule.html" >Set Schedule</a></li>
         	<li data-icon="plus"><a href="add-assignment.html" >Add Assignment</a></li>
         	<li data-icon="arrow-r"><a href="index.html">Assignment Due</a></li>
 			
@@ -114,23 +107,23 @@
 
 
 
-
 <script type="text/javascript">
 	
 	$("#formAssignment").submit(function(event){
     	
-		var assignmentName = $("#name").val();
-		var assignmentDescription = $("#txtDescription").val();
+		var className = $("#classname").val();
+		var assignmentName = $("#assignmentname").val();
+		var assignmentDescription = $("#textarea").val();
 		
 		html5sql.openDatabase("com.studybuddy.appdb", "Study Buddy Assignments", 3*1024*1024);
 		
 		
-		alert(assignmentName);
+		//alert(assignmentname);
 		 html5sql.process(
      		[
 				
-         		"CREATE table IF NOT EXISTS test (id INTEGER PRIMARY KEY, assignmentName TEXT, assignmentDescription TEXT);",
-				"INSERT INTO test (assignmentName, assignmentDescription) VALUES ('" + assignmentName + "', '" + assignmentDescription + "');"
+         		"CREATE table IF NOT EXISTS test (id INTEGER PRIMARY KEY, className TEXT, assignmentName TEXT, assignmentDescription TEXT);",
+				"INSERT INTO test (className, assignmentName, assignmentDescription) VALUES ('" + className + "', '" + assignmentName + "', '" + assignmentDescription + "');"
      		]	
     		,
      
@@ -147,7 +140,7 @@
     });
 	
     </script>
-    
+
     
   
 
